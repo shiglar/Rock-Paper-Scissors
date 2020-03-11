@@ -5,8 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
 </head>
-<body>
+<body style="background-color: white;">
     <h1>Welcome to Rock, Paper, Scissors</h1>
+    <p>Open the console to play.</p>
+
+    <script>
+        computerPlay = () => {
+            let getNumber = Math.floor(Math.random() * 3);
+            if (getNumber === 0) {
+                return 'rock'
+            } else if (getNumber === 1) {
+                return 'paper'
+            } else return 'scissors'
+        }
+
+        playRound = (playerSelection, computerSelection) => {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerPlay();
+            let results;
+            if (playerSelection === 'rock' && computerSelection === 'paper') {
+                results = 'You lose! Paper covers rock.'
+            } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+                results = 'You win! Rock beats scissors.'
+            } else results = 'Tied';
+            return (
+                `Computer chooses: ${computerSelection}\n You choose: ${playerSelection}\n ` + results
+            );
+        }
+
+    </script>
     
 </body>
 </html>
