@@ -23,14 +23,40 @@
             playerSelection = playerSelection.toLowerCase();
             computerSelection = computerPlay();
             let results;
-            if (playerSelection === 'rock' && computerSelection === 'paper') {
-                results = 'You lose! Paper covers rock.'
-            } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-                results = 'You win! Rock beats scissors.'
-            } else results = 'Tied';
-            return (
-                `Computer chooses: ${computerSelection}\n You choose: ${playerSelection}\n ` + results
-            );
+            let decider;
+            if (playerSelection === 'rock' && computerSelection === 'paper' || playerSelection === 'paper' && computerSelection === 'scissors' || playerSelection === 'scissors' && computerSelection === 'rock') {
+                results = `You lose! ${playerSelection} loses to ${computerSelection}.`
+                decider = 0;
+            } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'scissors' && computerSelection === 'paper' || playerSelection === 'paper' && computerSelection === 'rock') {
+                results = `You win! ${playerSelection} beats ${computerSelection}.`
+                decider = 1;
+            } else {
+                results = 'Tied'
+                decider = 2;
+            }
+            return decider;
+        }
+
+        game = () => {
+            let playerScore = 0;
+            let computerScore = 0;
+            for (let i = 0; i < 5; i++) {
+                let getChoice = prompt('What do you choose rock, paper, or scissors?')
+                let playGame = playRound(getChoice)
+                if (playGame === 2) {
+                    console.log('tie')
+                    i--
+                } else if (playGame === 1) {
+                    playerScore++
+                    console.log(`You win. You: ${playerScore}, computer: ${computerScore}`)
+                } else if (playGame === 0) {
+                    computerScore++
+                    console.log(`You lose. You: ${playerScore}, computer: ${computerScore}`)
+                } else console.log('shit')
+            }
+            if (playerScore > computerScore) {
+                return 'You win it all!!!'
+            } else return 'You fucking lost...'
         }
 
     </script>
