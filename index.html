@@ -6,8 +6,14 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body style="background-color: white;">
-    <h1>Welcome to Rock, Paper, Scissors</h1>
-    <p>Open the console to play.</p>
+    <div style="text-align: center;">
+        <h1>Welcome to Rock, Paper, Scissors</h1>
+        <p>Open the console to play.</p>
+    </div>
+
+    <div style="width: 60%; height: 200px; background-color: yellow; margin: 0 auto;">
+        <p id="scores" style="text-align: center;"></p>
+    </div>
 
     <script>
         computerPlay = () => {
@@ -44,7 +50,7 @@
                 let getChoice = prompt('What do you choose rock, paper, or scissors?')
                 let playGame = playRound(getChoice)
                 if (playGame === 2) {
-                    console.log('tie')
+                    console.log('Tie')
                     i--
                 } else if (playGame === 1) {
                     playerScore++
@@ -52,11 +58,11 @@
                 } else if (playGame === 0) {
                     computerScore++
                     console.log(`You lose. You: ${playerScore}, computer: ${computerScore}`)
-                } else console.log('shit')
+                } else console.log('Something went wrong.')
             }
             if (playerScore > computerScore) {
-                return 'You win it all!!!'
-            } else return 'You fucking lost...'
+                return `You win it all!!! You: ${playerScore}, Computer: ${computerScore}`
+            } else return `You lost... You: ${playerScore}, Computer: ${computerScore}`
         }
 
     </script>
